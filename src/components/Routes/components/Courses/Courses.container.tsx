@@ -6,12 +6,12 @@ import { GET_COURSES } from '../../../../data/queries';
 import Courses from './Courses';
 
 const CoursesContainer: React.FC = () => {
-  const { data } = useQuery<{ courses: ICourse[] }>(GET_COURSES);
+  const { data, loading } = useQuery<{ courses: ICourse[] }>(GET_COURSES);
 
   return (
     <>
       <Helmet title="Courses" />
-      <Courses courses={data?.courses} />
+      <Courses courses={data?.courses} loading={loading} />
     </>
   );
 };

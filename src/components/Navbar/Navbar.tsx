@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             OMSCentral
@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
           <NavbarButton path={paths.courses}>Courses</NavbarButton>
           <NavbarButton path={paths.reviews}>Reviews</NavbarButton>
           <Grow />
-          {auth.authenticated ? (
+          {auth.initializing ? null : auth.authenticated ? (
             <NavbarButton
               onClick={() => firebase.auth.signOut()}
               path={paths.login}
@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
           ) : (
             <NavbarButton path={paths.login}>Login</NavbarButton>
           )}
-          {auth.authenticated && <UserMenu />}
+          {auth.initializing ? null : auth.authenticated && <UserMenu />}
           <div className={classes.git}>
             <GitHubButton
               href="https://github.com/OMSCentral/omscentral-client"

@@ -10,20 +10,20 @@ import { useStyles } from './App.styles';
 
 const App: React.FC = () => {
   const classes = useStyles();
-
   const auth = useContext(AuthContext);
-  if (auth.initializing) {
-    return <Loading />;
-  }
 
   return (
     <Router history={browserHistory}>
       <Navbar />
-      <div className={classes.routes}>
-        <Suspense fallback={<div />}>
-          <Routes />
-        </Suspense>
-      </div>
+      {auth.initializing ? (
+        <Loading />
+      ) : (
+        <div className={classes.routes}>
+          <Suspense fallback={<Loading />}>
+            <Routes />
+          </Suspense>
+        </div>
+      )}
       <Actions />
     </Router>
   );

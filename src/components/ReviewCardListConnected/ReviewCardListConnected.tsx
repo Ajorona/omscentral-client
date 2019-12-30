@@ -1,7 +1,7 @@
 import React from 'react';
 import { IReview } from '../../data/interfaces';
-import ReviewCardList from '../ReviewCardList';
 import Button from '../Button';
+import ReviewCardList from '../ReviewCardList';
 import Toolbar, { SortKey } from './components/Toolbar';
 
 export { SortKey };
@@ -26,6 +26,7 @@ const ReviewCardListConnected: React.FC<IProps> = ({
   message
 }) => (
   <ReviewCardList
+    loading={loading}
     reviews={reviews}
     before={
       <>

@@ -14,6 +14,7 @@ import Stats from './components/Stats';
 import compare from '../../../../utils/compare';
 import stableSort from '../../../../utils/stableSort';
 import useSession from '../../../../utils/useSessionStorage';
+import Loading from '../../../Loading/Loading';
 import { NotificationContext } from '../../../Notification/Notification';
 import { ICourse } from '../../../../data/interfaces';
 import { useStyles } from './Courses.styles';
@@ -45,9 +46,10 @@ const sort = (a: ICourse, b: ICourse, orderBy: SortKey): number => {
 
 interface IProps {
   courses?: ICourse[];
+  loading?: boolean;
 }
 
-const Courses: React.FC<IProps> = ({ courses }) => {
+const Courses: React.FC<IProps> = ({ courses, loading }) => {
   const classes = useStyles();
   const history = useHistory();
   const notification = useContext(NotificationContext)!;
@@ -88,6 +90,10 @@ const Courses: React.FC<IProps> = ({ courses }) => {
       (!filter || filterRegex.test([c.id, c.department, c.name].join(' '))),
     [deprecated, foundational, filter, filterRegex]
   );
+
+  if (loading) {
+    return <Loading />;
+  }
 
   if (!courses?.length) {
     return null;
