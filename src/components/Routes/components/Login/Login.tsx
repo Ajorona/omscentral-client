@@ -8,6 +8,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import GoogleIcon from '@material-ui/icons/GTranslate';
 import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import TextField from '@material-ui/core/TextField';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -16,6 +17,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import Button from '../../../Button';
 import Link from '../../../Link';
 import Paper from '../../../Paper';
+import White from '../../../White';
 import { paths } from '../../../../constants';
 import { useStyles } from './Login.styles';
 import { FirebaseContext } from '../../../Firebase';
@@ -65,6 +67,7 @@ const Login: React.FC<IProps> = ({ disabled, onSubmit, onSocialLogin }) => {
 
   return (
     <Container component="main" maxWidth="xs">
+      <White />
       <Paper>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -124,10 +127,16 @@ const Login: React.FC<IProps> = ({ disabled, onSubmit, onSocialLogin }) => {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link to={paths.resetPassword}>Forgot password?</Link>
+              <Link to={paths.resetPassword}>
+                <Hidden smDown>Forgot password?</Hidden>
+                <Hidden mdUp>Forgot?</Hidden>
+              </Link>
             </Grid>
             <Grid item>
-              <Link to={paths.register}>Need an account? Register</Link>
+              <Link to={paths.register}>
+                <Hidden smDown>Need an account? Register</Hidden>
+                <Hidden mdUp>Register</Hidden>
+              </Link>
             </Grid>
           </Grid>
           <Grid

@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '../Button';
 import Paper from '../Paper';
 import Typeahead from '../Typeahead';
+import White from '../White';
 import { ICourse, ISemester, IReview } from '../../data/interfaces';
 import { reviewMeta } from '../../constants';
 import { useStyles } from './ReviewForm.styles';
@@ -89,6 +90,7 @@ const ReviewForm: React.FC<IProps> = ({
 
   return (
     <Container component="main" maxWidth="sm">
+      <White />
       <Paper>
         <Avatar className={classes.avatar}>
           <EditOutlinedIcon />

@@ -3,12 +3,14 @@ import { useForm } from 'react-hook-form';
 import Avatar from '@material-ui/core/Avatar';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Button from '../../../Button';
 import Link from '../../../Link';
 import Paper from '../../../Paper';
+import White from '../../../White';
 import { paths } from '../../../../constants';
 import { useStyles } from './ResetPassword.styles';
 
@@ -27,6 +29,7 @@ const ResetPassword: React.FC<IProps> = ({ disabled, onSubmit }) => {
 
   return (
     <Container component="main" maxWidth="xs">
+      <White />
       <Paper>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -64,10 +67,16 @@ const ResetPassword: React.FC<IProps> = ({ disabled, onSubmit }) => {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link to={paths.login}>Remembered? Login</Link>
+              <Link to={paths.login}>
+                <Hidden smDown>Remembered? Login</Hidden>
+                <Hidden mdUp>Login</Hidden>
+              </Link>
             </Grid>
             <Grid item>
-              <Link to={paths.register}>Need an account? Register</Link>
+              <Link to={paths.register}>
+                <Hidden smDown>Need an account? Register</Hidden>
+                <Hidden mdUp>Register</Hidden>
+              </Link>
             </Grid>
           </Grid>
         </form>

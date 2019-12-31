@@ -5,11 +5,6 @@ import lightBlue from '@material-ui/core/colors/lightBlue';
 import red from '@material-ui/core/colors/red';
 
 export const useStyles = makeStyles(theme => ({
-  '@global': {
-    body: {
-      backgroundColor: theme.palette.common.white
-    }
-  },
   avatar: {
     margin: theme.spacing(4),
     backgroundColor: theme.palette.secondary.main
@@ -20,7 +15,9 @@ export const useStyles = makeStyles(theme => ({
   },
   social: {
     margin: theme.spacing(4, 0, 0),
-    padding: theme.spacing(0, 6)
+    [theme.breakpoints.up('md')]: {
+      padding: theme.spacing(0, 6)
+    }
   },
   facebook: {
     color: theme.palette.getContrastText(blue[900]),

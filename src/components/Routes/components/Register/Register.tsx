@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '../../../Button';
 import Link from '../../../Link';
 import Paper from '../../../Paper';
+import White from '../../../White';
 import { paths } from '../../../../constants';
 import { useStyles } from './Register.styles';
 
@@ -28,6 +29,7 @@ const Register: React.FC<IProps> = ({ disabled, onSubmit }) => {
 
   return (
     <Container component="main" maxWidth="xs">
+      <White />
       <Paper>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />

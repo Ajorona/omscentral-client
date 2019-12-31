@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '../../../Button';
 import Link from '../../../Link';
 import Paper from '../../../Paper';
+import White from '../../../White';
 import { Nullable } from '../../../../core';
 import { paths } from '../../../../constants';
 import { useStyles } from './SetPassword.styles';
@@ -29,6 +30,7 @@ const SetPassword: React.FC<IProps> = ({ email, disabled, onSubmit }) => {
 
   return (
     <Container component="main" maxWidth="xs">
+      <White />
       <Paper>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
