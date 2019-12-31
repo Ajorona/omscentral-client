@@ -11,6 +11,14 @@ interface IRoute {
 
 const routes: IRoute[] = [
   {
+    path: paths.privacy,
+    component: lazy(() => import('./components/Privacy'))
+  },
+  {
+    path: paths.terms,
+    component: lazy(() => import('./components/Terms'))
+  },
+  {
     path: paths.error,
     component: lazy(() => import('./components/Error'))
   },

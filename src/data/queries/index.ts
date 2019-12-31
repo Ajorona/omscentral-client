@@ -1,3 +1,5 @@
+export * from './GET_CONFIG';
+
 export * from './GET_COURSE_REVIEWS';
 export * from './GET_COURSE';
 export * from './GET_COURSES';

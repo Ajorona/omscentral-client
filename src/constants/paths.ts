@@ -4,6 +4,7 @@ export const paths = {
   error: '/error/:code',
   landing: '/',
   login: '/login',
+  privacy: '/privacy',
   register: '/register',
   resetPassword: '/reset-password',
   review: {
@@ -12,6 +13,7 @@ export const paths = {
   },
   reviews: '/reviews',
   setPassword: '/set-password',
+  terms: '/terms',
   userProfile: '/user/profile',
   userReviews: '/user/reviews'
 };
