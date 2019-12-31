@@ -1,7 +1,7 @@
 import React, { useContext, useMemo } from 'react';
 import { useHistory } from 'react-router';
 import Container from '@material-ui/core/Container';
-import Paper from '@material-ui/core/Paper';
+import MaterialPaper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -11,10 +11,11 @@ import TableRow from '@material-ui/core/TableRow';
 import HeadCell, { SortKey, SortDirection, cells } from './components/HeadCell';
 import Toolbar from './components/Toolbar';
 import Stats from './components/Stats';
+import Paper from '../../../Paper';
 import compare from '../../../../utils/compare';
 import stableSort from '../../../../utils/stableSort';
 import useSession from '../../../../utils/useSessionStorage';
-import Loading from '../../../Loading/Loading';
+import Loading from '../../../Loading';
 import { NotificationContext } from '../../../Notification/Notification';
 import { ICourse } from '../../../../data/interfaces';
 import { useStyles } from './Courses.styles';
@@ -103,7 +104,7 @@ const Courses: React.FC<IProps> = ({ courses, loading }) => {
 
   return (
     <Container component="main" maxWidth="xl">
-      <div className={classes.paper}>
+      <Paper>
         <Toolbar
           size={size}
           onSizeChange={setSize}
@@ -114,7 +115,7 @@ const Courses: React.FC<IProps> = ({ courses, loading }) => {
           filter={filter}
           onFilterChange={setFilter}
         />
-        <TableContainer component={Paper}>
+        <TableContainer component={MaterialPaper}>
           <Table className={classes.table} size={size} aria-label="courses">
             <TableHead>
               <TableRow>
@@ -161,7 +162,7 @@ const Courses: React.FC<IProps> = ({ courses, loading }) => {
             </TableBody>
           </Table>
         </TableContainer>
-      </div>
+      </Paper>
     </Container>
   );
 };

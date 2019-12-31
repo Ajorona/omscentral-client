@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Button from '../Button';
+import Paper from '../Paper';
 import Typeahead from '../Typeahead';
 import { ICourse, ISemester, IReview } from '../../data/interfaces';
 import { reviewMeta } from '../../constants';
@@ -88,7 +89,7 @@ const ReviewForm: React.FC<IProps> = ({
 
   return (
     <Container component="main" maxWidth="sm">
-      <div className={classes.paper}>
+      <Paper>
         <Avatar className={classes.avatar}>
           <EditOutlinedIcon />
         </Avatar>
@@ -265,7 +266,7 @@ const ReviewForm: React.FC<IProps> = ({
             </Button>
           )}
         </form>
-      </div>
+      </Paper>
     </Container>
   );
 };

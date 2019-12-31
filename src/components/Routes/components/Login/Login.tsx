@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import Button from '../../../Button';
 import Link from '../../../Link';
+import Paper from '../../../Paper';
 import { paths } from '../../../../constants';
 import { useStyles } from './Login.styles';
 import { FirebaseContext } from '../../../Firebase';
@@ -64,7 +65,7 @@ const Login: React.FC<IProps> = ({ disabled, onSubmit, onSocialLogin }) => {
 
   return (
     <Container component="main" maxWidth="xs">
-      <div className={classes.paper}>
+      <Paper>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
@@ -152,7 +153,7 @@ const Login: React.FC<IProps> = ({ disabled, onSubmit, onSocialLogin }) => {
             ))}
           </Grid>
         </form>
-      </div>
+      </Paper>
     </Container>
   );
 };

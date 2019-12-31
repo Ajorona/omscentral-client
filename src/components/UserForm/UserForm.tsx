@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Button from '../Button';
+import Paper from '../Paper';
 import { IProgram, ISpecialization, IUser } from '../../data/interfaces';
 import { useStyles } from './UserForm.styles';
 
@@ -69,7 +70,7 @@ const UserForm: React.FC<IProps> = ({
 
   return (
     <Container component="main" maxWidth="sm">
-      <div className={classes.paper}>
+      <Paper>
         <Avatar className={classes.avatar}>
           <AccountIcon />
         </Avatar>
@@ -190,7 +191,7 @@ const UserForm: React.FC<IProps> = ({
             {action}
           </Button>
         </form>
-      </div>
+      </Paper>
     </Container>
   );
 };

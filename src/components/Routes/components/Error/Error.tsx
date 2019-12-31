@@ -4,6 +4,7 @@ import Container from '@material-ui/core/Container';
 import ErrorOutlinedIcon from '@material-ui/icons/ErrorOutlined';
 import Typography from '@material-ui/core/Typography';
 import Link from '../../../Link';
+import Paper from '../../../Paper';
 import { paths } from '../../../../constants';
 import { useStyles } from './Error.styles';
 
@@ -16,7 +17,7 @@ const ErrorUI: React.FC<IProps> = ({ text }) => {
 
   return (
     <Container component="main" maxWidth="sm">
-      <div className={classes.paper}>
+      <Paper>
         <Avatar className={classes.avatar}>
           <ErrorOutlinedIcon />
         </Avatar>
@@ -26,7 +27,7 @@ const ErrorUI: React.FC<IProps> = ({ text }) => {
         <Link className={classes.link} to={paths.landing}>
           Home
         </Link>
-      </div>
+      </Paper>
     </Container>
   );
 };

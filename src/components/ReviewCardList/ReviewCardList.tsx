@@ -4,8 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { IReview } from '../../data/interfaces';
 import { NotificationContext } from '../Notification';
-import { useStyles } from './ReviewCardList.styles';
-import Loading from '../Loading/Loading';
+import Loading from '../Loading';
+import Paper from '../Paper';
 import ReviewCard from '../ReviewCard';
 
 interface IProps {
@@ -23,7 +23,6 @@ const ReviewCardList: React.FC<IProps> = ({
   before,
   after
 }) => {
-  const classes = useStyles();
   const notification = useContext(NotificationContext)!;
 
   const getDeepLink = (id: string): string =>
@@ -35,7 +34,7 @@ const ReviewCardList: React.FC<IProps> = ({
 
   return (
     <Container component="main" maxWidth="md">
-      <div className={classes.paper}>
+      <Paper>
         {loading && !reviews?.length ? (
           <Loading />
         ) : reviews?.length ? (
@@ -65,7 +64,7 @@ const ReviewCardList: React.FC<IProps> = ({
         ) : (
           whenEmpty
         )}
-      </div>
+      </Paper>
     </Container>
   );
 };

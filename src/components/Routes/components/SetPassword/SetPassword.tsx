@@ -6,8 +6,9 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import Link from '../../../Link';
 import Button from '../../../Button';
+import Link from '../../../Link';
+import Paper from '../../../Paper';
 import { Nullable } from '../../../../core';
 import { paths } from '../../../../constants';
 import { useStyles } from './SetPassword.styles';
@@ -28,7 +29,7 @@ const SetPassword: React.FC<IProps> = ({ email, disabled, onSubmit }) => {
 
   return (
     <Container component="main" maxWidth="xs">
-      <div className={classes.paper}>
+      <Paper>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
@@ -81,7 +82,7 @@ const SetPassword: React.FC<IProps> = ({ email, disabled, onSubmit }) => {
             </Grid>
           </Grid>
         </form>
-      </div>
+      </Paper>
     </Container>
   );
 };

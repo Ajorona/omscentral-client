@@ -6,8 +6,9 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import Link from '../../../Link';
 import Button from '../../../Button';
+import Link from '../../../Link';
+import Paper from '../../../Paper';
 import { paths } from '../../../../constants';
 import { useStyles } from './Register.styles';
 
@@ -27,7 +28,7 @@ const Register: React.FC<IProps> = ({ disabled, onSubmit }) => {
 
   return (
     <Container component="main" maxWidth="xs">
-      <div className={classes.paper}>
+      <Paper>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
@@ -89,7 +90,7 @@ const Register: React.FC<IProps> = ({ disabled, onSubmit }) => {
             </Grid>
           </Grid>
         </form>
-      </div>
+      </Paper>
     </Container>
   );
 };

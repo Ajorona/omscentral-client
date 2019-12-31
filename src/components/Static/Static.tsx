@@ -2,6 +2,7 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Container from '@material-ui/core/Container';
+import Paper from '../Paper';
 import { useStyles } from './Static.styles';
 
 interface IProps {
@@ -13,13 +14,13 @@ const Static: React.FC<IProps> = ({ html }) => {
 
   return (
     <Container component="main" maxWidth="md">
-      <div className={classes.paper}>
+      <Paper>
         <Card>
           <CardContent className={classes.cardContent}>
             <div dangerouslySetInnerHTML={{ __html: html }} />
           </CardContent>
         </Card>
-      </div>
+      </Paper>
     </Container>
   );
 };
