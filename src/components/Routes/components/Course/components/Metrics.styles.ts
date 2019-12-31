@@ -13,6 +13,13 @@ export const useStyles = makeStyles(theme => ({
     borderRight: '1px solid #efefef',
     '&:last-child': {
       borderRight: 'none'
+    },
+    [theme.breakpoints.down('sm')]: {
+      borderRight: 'none',
+      borderBottom: '1px solid #efefef',
+      '&:last-child': {
+        borderBottom: '1px solid #efefef'
+      }
     }
   }
 }));

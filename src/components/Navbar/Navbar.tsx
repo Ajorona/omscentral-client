@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import GitHubButton from 'react-github-btn';
 import AppBar from '@material-ui/core/AppBar';
+import Hidden from '@material-ui/core/Hidden';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { paths } from '../../constants';
@@ -20,9 +20,11 @@ const Navbar: React.FC = () => {
     <div className={classes.root}>
       <AppBar position="fixed">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            OMSCentral
-          </Typography>
+          <Hidden xsDown>
+            <Typography variant="h6" className={classes.title}>
+              OMSCentral
+            </Typography>
+          </Hidden>
           <NavbarButton path={paths.courses}>Courses</NavbarButton>
           <NavbarButton path={paths.reviews}>Reviews</NavbarButton>
           <Grow />
@@ -37,12 +39,6 @@ const Navbar: React.FC = () => {
             <NavbarButton path={paths.login}>Login</NavbarButton>
           )}
           {auth.initializing ? null : auth.authenticated && <UserMenu />}
-          <div className={classes.git}>
-            <GitHubButton
-              href="https://github.com/OMSCentral/omscentral-client"
-              aria-label="Star OMSCentral/omscentral-client on GitHub"
-            />
-          </div>
         </Toolbar>
       </AppBar>
     </div>

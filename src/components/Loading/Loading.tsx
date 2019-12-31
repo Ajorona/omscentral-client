@@ -9,13 +9,11 @@ const Loading: React.FC = () => {
   const classes = useStyles();
 
   return (
-    <Container maxWidth="xs" className={classes.container}>
-      <Card className={classes.card}>
-        <CardContent className={classes.cardContent}>
-          <CircularProgress />
-        </CardContent>
-      </Card>
-    </Container>
+    <Card className={classes.card}>
+      <CardContent className={classes.cardContent}>
+        <CircularProgress />
+      </CardContent>
+    </Card>
   );
 };
 

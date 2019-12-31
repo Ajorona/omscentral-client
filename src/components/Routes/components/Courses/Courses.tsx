@@ -1,5 +1,7 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import { useHistory } from 'react-router';
+import { Theme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Container from '@material-ui/core/Container';
 import MaterialPaper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -54,12 +56,17 @@ const Courses: React.FC<IProps> = ({ courses, loading }) => {
   const classes = useStyles();
   const history = useHistory();
   const notification = useContext(NotificationContext)!;
+  const sm = useMediaQuery<Theme>(theme => theme.breakpoints.down('sm'));
   const [orderBy, setOrderBy] = useSession<SortKey>('/c:ob', SortKey.Id);
   const [order, setOrder] = useSession<SortDirection>('/c:o', 'asc');
   const [size, setSize] = useSession<'small' | 'medium'>('/c:s', 'medium');
   const [filter, setFilter] = useSession<string>('/c:f', '');
   const [foundational, setFoundational] = useSession<boolean>('/c:fo', false);
   const [deprecated, setDeprecated] = useSession<boolean>('/c:d', true);
+
+  useEffect(() => {
+    sm && setSize('small');
+  }, [sm]);
 
   const handleHeadCellClick = (id: SortKey) => () => {
     const isDesc = orderBy === id && order === 'desc';

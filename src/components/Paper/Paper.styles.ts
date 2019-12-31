@@ -6,6 +6,10 @@ export const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
+    [theme.breakpoints.down('md')]: {
+      marginTop: 0,
+      marginBottom: theme.spacing(12)
+    }
   }
 }));

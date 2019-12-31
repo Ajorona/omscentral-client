@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import Markdown from 'react-markdown';
 import { useHistory } from 'react-router';
 import CopyToClipboard from 'react-copy-to-clipboard';
+import { Theme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -47,27 +49,27 @@ const ReviewCard: React.FC<IProps> = ({
   const classes = useStyles();
   const history = useHistory();
   const auth = useContext(AuthContext);
+  const xs = useMediaQuery<Theme>(theme => theme.breakpoints.down('xs'));
 
-  const avatar =
-    semester.season === 1 ? (
-      <Avatar className={classes.spring}>
-        <SpringIcon />
-      </Avatar>
-    ) : semester.season === 2 ? (
-      <Avatar className={classes.summer}>
-        <SummerIcon />
-      </Avatar>
-    ) : semester.season === 3 ? (
-      <Avatar className={classes.fall}>
-        <FallIcon />
-      </Avatar>
-    ) : (
-      <Avatar>
-        <UnknownIcon />
-      </Avatar>
-    );
+  const avatar = xs ? null : semester.season === 1 ? (
+    <Avatar className={classes.spring}>
+      <SpringIcon />
+    </Avatar>
+  ) : semester.season === 2 ? (
+    <Avatar className={classes.summer}>
+      <SummerIcon />
+    </Avatar>
+  ) : semester.season === 3 ? (
+    <Avatar className={classes.fall}>
+      <FallIcon />
+    </Avatar>
+  ) : (
+    <Avatar>
+      <UnknownIcon />
+    </Avatar>
+  );
 
-  const title = `${course.id}: ${course.name}`;
+  const title = xs ? course.id : `${course.id}: ${course.name}`;
   const subheader = new Date(created).toLocaleString();
   const difficulty = d && reviewMeta.translateDifficulty(d);
   const rating = r && reviewMeta.translateRating(r);
@@ -88,34 +90,35 @@ const ReviewCard: React.FC<IProps> = ({
       label: workload,
       tooltip: 'Workload'
     }
-  ].filter(({ label }) => Boolean(label));
+  ].filter(chip => Boolean(chip?.label));
+  xs && chips.pop() && chips.pop();
 
   const handleEditClick = () => history.push(`/review/${id}`);
 
-  const action =
-    auth.user?.uid === author.id ? (
-      <IconButton onClick={handleEditClick} color="inherit">
-        <EditIcon />
-      </IconButton>
-    ) : (
-      <CopyToClipboard text={deepLink(id)} onCopy={onDeepLinkCopy}>
-        <Tooltip title="Copy link">
-          <IconButton color="inherit">
-            <LinkIcon />
-          </IconButton>
-        </Tooltip>
-      </CopyToClipboard>
-    );
+  const action = xs ? null : auth.user?.uid === author.id ? (
+    <IconButton onClick={handleEditClick} color="inherit">
+      <EditIcon />
+    </IconButton>
+  ) : (
+    <CopyToClipboard text={deepLink(id)} onCopy={onDeepLinkCopy}>
+      <Tooltip title="Copy link">
+        <IconButton color="inherit">
+          <LinkIcon />
+        </IconButton>
+      </Tooltip>
+    </CopyToClipboard>
+  );
 
   return (
     <Card className={classes.card}>
       <CardHeader
+        className={classes.header}
         avatar={avatar}
         title={title}
         subheader={subheader}
         action={action}
       />
-      <CardContent>
+      <CardContent className={classes.content}>
         {body ? (
           <Markdown source={body} />
         ) : (

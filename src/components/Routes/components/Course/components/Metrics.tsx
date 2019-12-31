@@ -40,7 +40,7 @@ const Metrics: React.FC<IProps> = ({ course: { metric } }) => {
         {/* <pre style={{ margin: 0 }}>{JSON.stringify(course, null, 2)}</pre> */}
         <Grid container>
           {data.map(({ label, value }) => (
-            <Grid item xs={3} key={label} className={classes.metric}>
+            <Grid item xs={12} md={3} key={label} className={classes.metric}>
               <Typography variant="body2" color="textSecondary">
                 {label}
               </Typography>

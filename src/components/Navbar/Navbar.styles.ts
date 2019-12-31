@@ -11,9 +11,5 @@ export const useStyles = makeStyles(theme => ({
   },
   title: {
     marginRight: theme.spacing(2)
-  },
-  git: {
-    marginLeft: theme.spacing(1),
-    marginBottom: -5
   }
 }));

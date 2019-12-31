@@ -13,13 +13,26 @@ export const useStyles = makeStyles(theme => ({
   avatar: {
     backgroundColor: red[500]
   },
+  header: {
+    [theme.breakpoints.down('sm')]: {
+      padding: 0
+    }
+  },
+  content: {
+    [theme.breakpoints.down('sm')]: {
+      padding: 0
+    }
+  },
   actions: {
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    [theme.breakpoints.down('sm')]: {
+      padding: 0
+    }
   },
   fall: {
     color: theme.palette.getContrastText(brown[400]),
