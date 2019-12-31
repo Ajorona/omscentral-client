@@ -13,7 +13,6 @@ interface IProps {
   onLoadMore?: () => void;
   loading?: boolean;
   before?: JSX.Element;
-  message?: string;
 }
 
 const ReviewCardListConnected: React.FC<IProps> = ({
@@ -22,8 +21,7 @@ const ReviewCardListConnected: React.FC<IProps> = ({
   onSortKeyChange,
   onLoadMore,
   loading,
-  before,
-  message
+  before
 }) => (
   <ReviewCardList
     loading={loading}
@@ -31,11 +29,7 @@ const ReviewCardListConnected: React.FC<IProps> = ({
     before={
       <>
         {before}
-        <Toolbar
-          sortKey={sortKey}
-          onSortKeyChange={onSortKeyChange}
-          message={message}
-        />
+        <Toolbar sortKey={sortKey} onSortKeyChange={onSortKeyChange} />
       </>
     }
     after={

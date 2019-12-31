@@ -11,7 +11,6 @@ interface IProps {
   fetchPolicy?: WatchQueryFetchPolicy;
   pagination?: boolean;
   before?: JSX.Element;
-  message?: string;
 }
 
 const ReviewCardListConnectedContainer: React.FC<IProps> = ({
@@ -19,8 +18,7 @@ const ReviewCardListConnectedContainer: React.FC<IProps> = ({
   variables = {},
   fetchPolicy,
   pagination = true,
-  before,
-  message
+  before
 }) => {
   const [limit, setLimit] = useSession<number>('rcl:l', pagination ? 10 : 10e6);
   const [sortKey, setSortKey] = useSession<SortKey>('rcl:sk', SortKey.Semester);
@@ -53,7 +51,6 @@ const ReviewCardListConnectedContainer: React.FC<IProps> = ({
       onSortKeyChange={handleSortKeyChange}
       onLoadMore={pagination ? handleLoadMore : undefined}
       before={before}
-      message={message}
     />
   );
 };

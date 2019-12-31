@@ -6,11 +6,7 @@ import ReviewCardListConnected from '../../../ReviewCardListConnected';
 const ReviewsContainer: React.FC = () => (
   <>
     <Helmet title="Reviews" />
-    <ReviewCardListConnected
-      query={GET_REVIEWS}
-      message="Showing recent reviews..."
-      fetchPolicy="no-cache"
-    />
+    <ReviewCardListConnected query={GET_REVIEWS} fetchPolicy="no-cache" />
   </>
 );
 
