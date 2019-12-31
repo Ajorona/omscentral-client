@@ -66,7 +66,7 @@ const Courses: React.FC<IProps> = ({ courses, loading }) => {
 
   useEffect(() => {
     sm && setSize('small');
-  }, [sm]);
+  }, [sm, setSize]);
 
   const handleHeadCellClick = (id: SortKey) => () => {
     const isDesc = orderBy === id && order === 'desc';
