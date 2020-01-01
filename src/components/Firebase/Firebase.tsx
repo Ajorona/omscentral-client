@@ -1,9 +1,12 @@
 import React, { createContext } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/performance';
 import { firebaseConfig } from '../../config';
 
-const app = firebase.initializeApp(firebaseConfig, 'omscentral');
+const app = firebase.initializeApp(firebaseConfig);
+
+firebase.performance(app);
 
 interface IFirebase {
   auth: firebase.auth.Auth;
