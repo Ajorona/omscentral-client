@@ -13,11 +13,7 @@ const LoginContainer: React.FC = () => {
   const handleSubmit = async ({ email, password }: FormData) => {
     setLoading(true);
     try {
-      const { user } = await firebase.auth.signInWithEmailAndPassword(
-        email,
-        password
-      );
-      notification.success(`Logged in as ${user!.email}.`);
+      await firebase.auth.signInWithEmailAndPassword(email, password);
     } catch (error) {
       notification.error(error.message);
       setLoading(false);
@@ -27,8 +23,7 @@ const LoginContainer: React.FC = () => {
   const handleSocialLogin = async (provider: auth.AuthProvider) => {
     setLoading(true);
     try {
-      const { user } = await firebase.auth.signInWithPopup(provider);
-      notification.success(`Logged in as ${user!.providerData[0]!.email}.`);
+      await firebase.auth.signInWithPopup(provider);
     } catch (error) {
       notification.error(error.message);
       setLoading(false);

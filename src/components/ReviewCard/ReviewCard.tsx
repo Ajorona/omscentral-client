@@ -47,9 +47,9 @@ const ReviewCard: React.FC<IProps> = ({
   onDeepLinkCopy
 }) => {
   const classes = useStyles();
+  const xs = useMediaQuery<Theme>(theme => theme.breakpoints.down('xs'));
   const history = useHistory();
   const auth = useContext(AuthContext);
-  const xs = useMediaQuery<Theme>(theme => theme.breakpoints.down('xs'));
 
   const avatar = xs ? null : semester.season === 1 ? (
     <Avatar className={classes.spring}>

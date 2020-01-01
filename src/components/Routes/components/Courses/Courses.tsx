@@ -54,9 +54,9 @@ interface IProps {
 
 const Courses: React.FC<IProps> = ({ courses, loading }) => {
   const classes = useStyles();
+  const sm = useMediaQuery<Theme>(theme => theme.breakpoints.down('sm'));
   const history = useHistory();
   const notification = useContext(NotificationContext)!;
-  const sm = useMediaQuery<Theme>(theme => theme.breakpoints.down('sm'));
   const [orderBy, setOrderBy] = useSession<SortKey>('/c:ob', SortKey.Id);
   const [order, setOrder] = useSession<SortDirection>('/c:o', 'asc');
   const [size, setSize] = useSession<'small' | 'medium'>('/c:s', 'medium');

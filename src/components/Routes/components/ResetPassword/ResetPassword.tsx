@@ -1,9 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Theme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Avatar from '@material-ui/core/Avatar';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
@@ -25,6 +26,7 @@ interface IProps {
 
 const ResetPassword: React.FC<IProps> = ({ disabled, onSubmit }) => {
   const classes = useStyles();
+  const sm = useMediaQuery<Theme>(theme => theme.breakpoints.down('sm'));
   const { handleSubmit, register, errors } = useForm<FormData>();
 
   return (
@@ -67,15 +69,11 @@ const ResetPassword: React.FC<IProps> = ({ disabled, onSubmit }) => {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link to={paths.login}>
-                <Hidden smDown>Remembered? Login</Hidden>
-                <Hidden mdUp>Login</Hidden>
-              </Link>
+              <Link to={paths.login}>{sm ? 'Login' : 'Remembered? Login'}</Link>
             </Grid>
             <Grid item>
               <Link to={paths.register}>
-                <Hidden smDown>Need an account? Register</Hidden>
-                <Hidden mdUp>Register</Hidden>
+                {sm ? 'Register' : 'Need an account? Register'}
               </Link>
             </Grid>
           </Grid>

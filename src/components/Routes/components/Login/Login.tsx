@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { auth } from 'firebase/app';
+import { Theme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Avatar from '@material-ui/core/Avatar';
 import Container from '@material-ui/core/Container';
 import Fab from '@material-ui/core/Fab';
@@ -8,7 +10,6 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import GoogleIcon from '@material-ui/icons/GTranslate';
 import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import TextField from '@material-ui/core/TextField';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -35,6 +36,7 @@ interface IProps {
 
 const Login: React.FC<IProps> = ({ disabled, onSubmit, onSocialLogin }) => {
   const classes = useStyles();
+  const sm = useMediaQuery<Theme>(theme => theme.breakpoints.down('sm'));
   const { handleSubmit, register, errors } = useForm<FormData>();
   const firebase = useContext(FirebaseContext);
 
@@ -128,14 +130,12 @@ const Login: React.FC<IProps> = ({ disabled, onSubmit, onSocialLogin }) => {
           <Grid container>
             <Grid item xs>
               <Link to={paths.resetPassword}>
-                <Hidden smDown>Forgot password?</Hidden>
-                <Hidden mdUp>Forgot?</Hidden>
+                {sm ? 'Forgot?' : 'Forgot password?'}
               </Link>
             </Grid>
             <Grid item>
               <Link to={paths.register}>
-                <Hidden smDown>Need an account? Register</Hidden>
-                <Hidden mdUp>Register</Hidden>
+                {sm ? 'Register' : 'Need an account? Register'}
               </Link>
             </Grid>
           </Grid>

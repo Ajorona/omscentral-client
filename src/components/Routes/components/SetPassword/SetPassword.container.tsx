@@ -38,7 +38,6 @@ const SetPasswordContainer: React.FC = () => {
       await firebase.auth.confirmPasswordReset(oobCode!, password);
       notification.success(`Password set, logging in...`);
       await firebase.auth.signInWithEmailAndPassword(email!, password);
-      notification.success(`Logged in as ${email!}.`);
     } catch (error) {
       notification.error(error.message);
       setLoading(false);

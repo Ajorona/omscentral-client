@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
+import { Theme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import AppBar from '@material-ui/core/AppBar';
-import Hidden from '@material-ui/core/Hidden';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import LogoutIcon from '@material-ui/icons/ExitToApp';
 import { paths } from '../../constants';
 import { AuthContext } from '../Auth';
 import { FirebaseContext } from '../Firebase';
@@ -13,6 +15,7 @@ import { useStyles } from './Navbar.styles';
 
 const Navbar: React.FC = () => {
   const classes = useStyles();
+  const xs = useMediaQuery<Theme>(theme => theme.breakpoints.down('xs'));
   const firebase = useContext(FirebaseContext);
   const auth = useContext(AuthContext);
 
@@ -20,11 +23,11 @@ const Navbar: React.FC = () => {
     <div className={classes.root}>
       <AppBar position="fixed">
         <Toolbar>
-          <Hidden xsDown>
+          {!xs && (
             <Typography variant="h6" className={classes.title}>
               OMSCentral
             </Typography>
-          </Hidden>
+          )}
           <NavbarButton path={paths.courses}>Courses</NavbarButton>
           <NavbarButton path={paths.reviews}>Reviews</NavbarButton>
           <Grow />
@@ -33,7 +36,7 @@ const Navbar: React.FC = () => {
               onClick={() => firebase.auth.signOut()}
               path={paths.login}
             >
-              Logout
+              {xs ? <LogoutIcon /> : 'Logout'}
             </NavbarButton>
           ) : (
             <NavbarButton path={paths.login}>Login</NavbarButton>
